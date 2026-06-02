@@ -1,8 +1,14 @@
-# Boas Vindas Ao Porjeto Top Do Terceirão 
+# 🎉 Boas Vindas ao Projeto Top do Terceirão (Turma 3B)! 🎓
 
-# portifolio-compartilhado-3b
+Fala galera do Terceirão! Sejam muito bem-vindos ao nosso **Portfólio Compartilhado**. 🚀
 
-Este é o repositório do projeto. 
+Este espaço foi criado para ser a vitrine do nosso esforço, dedicação e de todos os projetos incríveis que desenvolvemos juntos ao longo desse ano inesquecível. Aqui, cada linha de código, cada ideia e cada contribuição conta a nossa história e o nosso legado!
+
+Preparem-se para deixar a marca da **Turma 3B**! Vamos codar, aprender e construir algo gigante juntos! 🌟
+
+---
+
+## 💻 portifolio-compartilhado-3b
 
 ## 🚀 Sobre o Projeto
 
@@ -23,7 +29,7 @@ Este projeto foi construído graças ao esforço colaborativo de **38 pessoas**.
 ### 💻 Equipe de Desenvolvimento
 1. [Abraão Genelhud ]
 2. [Adrian Acácio]
-3. [Nome do Colaborador 3]
+3. [Alisson Caio]
 4. [Nome do Colaborador 4]
 5. [Nome do Colaborador 5]
 6. [Nome do Colaborador 6]
