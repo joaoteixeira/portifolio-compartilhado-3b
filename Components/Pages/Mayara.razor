@@ -1,9 +1,96 @@
 ﻿@page "/mayara"
 
+<div class="container">
 
+    <div class="card">
+        <h1>@titulo</h1>
+        <p>@texto</p>
 
-<h3>Mayara</h3>
+        <button @onclick="Proximo">Próximo</button>
+    </div>
+
+</div>
+
+<style>
+    .container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #2a003f, #5a0f7a, #8e2de2);
+        font-family: Arial;
+    }
+
+    .card {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        width: 400px;
+        color: white;
+        box-shadow: 0 0 25px purple;
+        transition: 0.3s;
+    }
+
+    .card:hover {
+        transform: scale(1.03);
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    button {
+        padding: 10px 20px;
+        background: #a020f0;
+        border: none;
+        color: white;
+        border-radius: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #c056ff;
+    }
+</style>
 
 @code {
+    int slideAtual = 0;
 
+    string titulo = "Olá, eu sou a Mayara 👋";
+    string texto = "Bem-vindo à minha apresentação";
+
+    void Proximo()
+    {
+        slideAtual++;
+
+        if (slideAtual == 1)
+        {
+            titulo = "Sobre mim";
+            texto = "Sou estudante e estou aprendendo desenvolvimento web.";
+        }
+        else if (slideAtual == 2)
+        {
+            titulo = "O que eu gosto";
+            texto = "Gosto de tecnologia, jogos e aprender coisas novas.";
+        }
+        else if (slideAtual == 3)
+        {
+            titulo = "Obrigada!";
+            texto = "Fim da apresentação 💜";
+        }
+        else
+        {
+            slideAtual = 0;
+            titulo = "Olá, eu sou a Mayara 👋";
+            texto = "Bem-vindo à minha apresentação";
+        }
+    }
 }
