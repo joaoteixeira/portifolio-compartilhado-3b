@@ -1,53 +1,61 @@
-﻿string portfolio = @"
+﻿@page "/abraao"
+
 <style>
-body{
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e3a8a);
-    color: white;
-    margin: 0;
-    padding: 20px;
-}
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        margin: 0;
+    }
 
-.container{
-    max-width: 800px;
-    margin: auto;
-    background: rgba(255,255,255,0.1);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-}
+    .card {
+        max-width: 800px;
+        margin: 50px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
 
-h1{
-    text-align: center;
-    color: #60a5fa;
-}
+    h1 {
+        text-align: center;
+        color: #1e3a8a;
+    }
 
-p{
-    line-height: 1.8;
-    text-align: justify;
-}
+    p {
+        font-size: 18px;
+        line-height: 1.8;
+        text-align: justify;
+    }
 
-.contato{
-    margin-top: 20px;
-    text-align: center;
-    font-weight: bold;
-    color: #93c5fd;
-}
+    .contato {
+        text-align: center;
+        margin-top: 25px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #1e3a8a;
+    }
 </style>
 
-<div class='container'>
-    <h1>Meu Portfólio</h1>
+<div class="card">
+    <h1>Abraão</h1>
 
     <p>
-    Olá! Meu nome é Abraão, tenho 16 anos e sou estudante do 3º ano B do curso Técnico em Informática do IFRO.
-    Sou apaixonado por tecnologia e gosto de aprender cada vez mais sobre computadores, programação e inovação.
-    Estou sempre em busca de novos conhecimentos para desenvolver minhas habilidades e me preparar para o mercado de trabalho.
-    No futuro, pretendo cursar Enfermagem, pois também tenho interesse na área da saúde e em ajudar as pessoas.
-    Sou dedicado, responsável e gosto de enfrentar novos desafios.
+        Olá! Meu nome é Abraão, tenho 16 anos e sou estudante do 3º ano B do curso Técnico em Informática do IFRO.
+        Gosto muito de tecnologia, programação, computadores e de aprender coisas novas. Estou sempre buscando
+        desenvolver minhas habilidades e adquirir mais conhecimento para meu futuro profissional.
     </p>
 
-    <div class='contato'>
-        Fale comigo: (69) 99360-9509
+    <p>
+        Atualmente curso Informática e pretendo fazer Enfermagem no futuro. Sou uma pessoa dedicada, responsável
+        e gosto de enfrentar novos desafios. Busco crescer tanto na área da tecnologia quanto na área da saúde.
+    </p>
+
+    <div class="contato">
+        📞 Fale comigo: (69) 99360-9509
     </div>
 </div>
-";
+
+@code
+{
+
+}
