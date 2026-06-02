@@ -1,7 +1,53 @@
-﻿@page "/abraao"
-
-<h3>Abraao</h3>
-
-@code {
-
+﻿string portfolio = @"
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e3a8a);
+    color: white;
+    margin: 0;
+    padding: 20px;
 }
+
+.container{
+    max-width: 800px;
+    margin: auto;
+    background: rgba(255,255,255,0.1);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+h1{
+    text-align: center;
+    color: #60a5fa;
+}
+
+p{
+    line-height: 1.8;
+    text-align: justify;
+}
+
+.contato{
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    color: #93c5fd;
+}
+</style>
+
+<div class='container'>
+    <h1>Meu Portfólio</h1>
+
+    <p>
+    Olá! Meu nome é Abraão, tenho 16 anos e sou estudante do 3º ano B do curso Técnico em Informática do IFRO.
+    Sou apaixonado por tecnologia e gosto de aprender cada vez mais sobre computadores, programação e inovação.
+    Estou sempre em busca de novos conhecimentos para desenvolver minhas habilidades e me preparar para o mercado de trabalho.
+    No futuro, pretendo cursar Enfermagem, pois também tenho interesse na área da saúde e em ajudar as pessoas.
+    Sou dedicado, responsável e gosto de enfrentar novos desafios.
+    </p>
+
+    <div class='contato'>
+        Fale comigo: (69) 99360-9509
+    </div>
+</div>
+";
