@@ -5,16 +5,16 @@
 <HeadContent>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0 !important;
             padding: 0 !important;
-            background-color: #fdfcfc !important; /* var(--canvas) */
+            background-color: #faf9f5 !important; /* var(--canvas) */
         }
         ::selection {
-            background-color: #201d1d;
-            color: #fdfcfc;
+            background-color: #cc785c;
+            color: #ffffff;
         }
     </style>
 </HeadContent>
@@ -25,11 +25,7 @@
   <nav class="primary-nav">
     <div class="container nav-content">
       <div class="wordmark">
-U   U RRRR  III EEEE L   
-U   U R   R  I  E    L   
-U   U RRRR   I  EEE  L   
-U   U R R    I  E    L   
- UUU  R  RR III EEEE LLLL
+        <span class="spike-mark">✧</span> Uriel
       </div>
       <div class="nav-links">
         <a href="uriel#sobre">Sobre</a>
@@ -43,97 +39,108 @@ U   U R R    I  E    L
     </div>
   </nav>
 
-  <!-- Hero Text -->
+  <!-- Hero Section -->
   <section class="section container" id="sobre">
-    <h1 class="display-xl" style="margin-bottom: 24px;">Conheça o seu parceiro de desenvolvimento.</h1>
-    <p class="body-md" style="max-width: 700px; margin-bottom: 32px;">
-      Uriel é um engenheiro de software focado em interfaces editoriais e sistemas complexos. Projetando com calma, construindo com precisão.
-    </p>
-    <div style="display: flex; gap: 12px;">
-      <a href="uriel#projetos" class="button-primary">Ver Projetos</a>
-      <a href="uriel#manifesto" class="button-secondary">Ler o Manifesto</a>
+    <div class="hero-grid">
+      <div>
+        <h1 class="display-xl" style="margin-bottom: 24px;">Conheça o seu parceiro de desenvolvimento.</h1>
+        <p class="body-md" style="margin-bottom: 32px; font-size: 18px; color: var(--body-strong);">
+          Uriel é um engenheiro de software focado em interfaces editoriais e sistemas complexos. Projetando com calma, construindo com precisão.
+        </p>
+        <div style="display: flex; gap: 12px;">
+          <a href="uriel#projetos" class="button-primary">Ver Projetos</a>
+          <a href="uriel#manifesto" class="button-secondary">Ler o Manifesto</a>
+        </div>
+      </div>
+      
+      <!-- Mixed Editorial / TUI Mockup -->
+      <div class="hero-tui-mockup">
+        <div class="wordmark-ascii">
+U   U RRRR  III EEEE L   
+U   U R   R  I  E    L   
+U   U RRRR   I  EEE  L   
+U   U R R    I  E    L   
+ UUU  R  RR III EEEE LLLL
+        </div>
+        <div class="tui-prompt-row">
+          <span style="color: var(--mute);">|</span> Build <span style="color: var(--accent);">[Cargo]</span> uriel_core
+        </div>
+        <div class="tui-prompt-output">
+          <span class="mute"># Inicializando ambiente de Uriel</span><br>
+          <span class="output-white">$ cargo run --release --bin uriel_core</span><br>
+          <span class="success">Compiling</span> uriel v1.0.0<br>
+          <span class="success">Finished</span> release [optimized] target(s) in 0.12s<br>
+          <span class="success">Running</span> `target/release/uriel_core`<br><br>
+          <span class="output-white">[SISTEMA] Motor de pensamento ativado.</span><br>
+          <span class="output-white">[SISTEMA] Estilo visual: <span class="accent">Editorial + Terminal</span>.</span><br>
+          <span class="output-white">[SISTEMA] Status: <span class="success">Online e pronto para criar.</span></span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Hero TUI Mockup -->
-  <section class="section">
-    <div class="hero-tui-mockup">
-      <div class="wordmark-dark">
- U   U RRRR  III EEEE L   
- U   U R   R  I  E    L   
- U   U RRRR   I  EEE  L   
- U   U R R    I  E    L   
-  UUU  R  RR III EEEE LLLL
-      </div>
-      <div class="tui-prompt-row">
-        <span style="color: var(--mute);">|</span> Build <span style="color: var(--ash);">[Cargo]</span> uriel_core
-      </div>
-      <div class="tui-prompt-output">
-        <span class="mute"># Inicializando ambiente de Uriel</span><br>
-        <span class="output-white">$ cargo run --release --bin uriel_core</span><br>
-        <span class="success">Compiling</span> uriel v1.0.0<br>
-        <span class="success">Finished</span> release [optimized] target(s) in 0.12s<br>
-        <span class="success">Running</span> `target/release/uriel_core`<br><br>
-        <span class="output-white">[SISTEMA] Motor de pensamento ativado.</span><br>
-        <span class="output-white">[SISTEMA] Estilo visual: Warm Editorial -> ASCII Terminal.</span><br>
-        <span class="output-white">[SISTEMA] Status: <span class="success">Online e pronto para criar.</span></span>
-      </div>
-      <div class="tui-footer">
-        tab switch agent &nbsp;&nbsp; ctrl-p commands
-      </div>
-    </div>
-  </section>
-
-  <!-- Features Grid (List Rows) -->
+  <!-- Features Grid -->
   <section class="section container" id="projetos">
-    <h2 class="heading-md">**Princípios de Construção**</h2>
-    <div class="divider-hairline"></div>
-    
-    <div class="list-row">
-      <strong>[+] Elegância Funcional</strong>
-      <div>Interfaces que respeitam o usuário. Sem distrações desnecessárias, apenas fluxos de trabalho claros e uma tipografia bem pensada.</div>
-    </div>
-    <div class="list-row">
-      <strong>[+] Sistemas Resilientes</strong>
-      <div>Arquiteturas projetadas para durar. Código limpo, testes rigorosos e infraestrutura escalável que sustenta o produto.</div>
-    </div>
-    <div class="list-row">
-      <strong>[+] Design Editorial</strong>
-      <div>Uma abordagem literária para a web. Cores quentes, contraste preciso e tipografia monospaçada que traz uma voz humana e objetiva à tecnologia.</div>
+    <h2 class="display-lg" style="margin-bottom: 48px;">Princípios de Construção</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3 class="title-md" style="margin-bottom: 12px;">Elegância Funcional</h3>
+        <p class="body-md">Interfaces que respeitam o usuário. Sem distrações desnecessárias, apenas fluxos de trabalho claros e uma tipografia bem pensada.</p>
+      </div>
+      <div class="feature-card">
+        <h3 class="title-md" style="margin-bottom: 12px;">Sistemas Resilientes</h3>
+        <p class="body-md">Arquiteturas projetadas para durar. Código limpo, testes rigorosos e infraestrutura escalável que sustenta o produto.</p>
+      </div>
+      <div class="feature-card">
+        <h3 class="title-md" style="margin-bottom: 12px;">Design Editorial</h3>
+        <p class="body-md">Uma abordagem literária para a web. Cores quentes, contraste preciso e tipografia serifada que traz uma voz humana à tecnologia.</p>
+      </div>
     </div>
   </section>
 
-  <!-- Contact Callout -->
+  <!-- Coral Callout -->
   <section class="section container" id="contato">
-    <h2 class="heading-md">**Contato**</h2>
-    <div class="divider-hairline"></div>
-    
-    <div class="faq-row" style="border-bottom: none; padding-top: 24px;">
-      <h3 class="display-xl" style="font-size: 24px; margin-bottom: 16px;">Pronto para elevar seu próximo projeto?</h3>
-      <p class="body-md" style="max-width: 600px; margin-bottom: 24px;">
+    <div class="callout-coral">
+      <h2 class="display-sm" style="margin-bottom: 16px;">Pronto para elevar seu próximo projeto?</h2>
+      <p class="body-md" style="color: var(--on-primary); opacity: 0.9; max-width: 600px; margin: 0 auto 32px;">
         Vamos transformar ideias complexas em interfaces claras e elegantes. Entre em contato para discutirmos arquitetura, design e código.
       </p>
-      <a href="mailto:contato@uriel.dev" class="button-primary">Iniciar Conversa</a>
+      <a href="mailto:contato@uriel.dev" class="button-inverted">Iniciar Conversa</a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="footer-section container">
-    <div class="divider-hairline"></div>
-    <div class="footer-grid">
-      <div class="footer-cell"><a href="uriel#">GitHub [150K]</a></div>
-      <div class="footer-cell"><a href="uriel#">Docs</a></div>
-      <div class="footer-cell"><a href="uriel#">Changelog</a></div>
-      <div class="footer-cell"><a href="uriel#">Discord</a></div>
-      <div class="footer-cell"><a href="uriel#">X</a></div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">©2026 Uriel</div>
-      <div class="footer-links">
-        <a href="uriel#">Projetos</a> · 
-        <a href="uriel#">Manifesto</a> · 
-        <a href="uriel#">Contato</a> · 
-        <a href="uriel#">pt-BR ▼</a>
+  <footer class="footer-section">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="spike-mark">✧</span> Uriel
+        </div>
+        <p class="body-md" style="color: var(--on-dark-mute); font-size: 14px;">Engenheiro de Software &<br>Designer de Interfaces.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Produto</h4>
+        <ul>
+          <li><a href="uriel#">Projetos</a></li>
+          <li><a href="uriel#">Estudos de Caso</a></li>
+          <li><a href="uriel#">Preços</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="uriel#">Documentação</a></li>
+          <li><a href="uriel#">Blog</a></li>
+          <li><a href="uriel#">Comunidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul>
+          <li><a href="uriel#">Sobre Uriel</a></li>
+          <li><a href="uriel#">Manifesto</a></li>
+          <li><a href="uriel#">Contato</a></li>
+        </ul>
       </div>
     </div>
   </footer>
