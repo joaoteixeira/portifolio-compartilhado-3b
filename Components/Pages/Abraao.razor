@@ -1,7 +1,181 @@
 ﻿@page "/abraao"
 
-<h3>Abraao</h3>
+<style>
+    body {
+        margin: 0;
+        background: #0a0a0a;
+        font-family: "Segoe UI", sans-serif;
+        overflow-x: hidden;
+    }
 
-@code {
+    .container {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px;
+    }
+
+    .card {
+        max-width: 850px;
+        background: rgba(20,20,20,0.85);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 30px;
+        padding: 50px;
+        color: white;
+        box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        animation: aparecer 1s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: #2563eb;
+        filter: blur(120px);
+        opacity: 0.15;
+        top: -100px;
+        right: -100px;
+    }
+
+    .card::after {
+        content: "";
+        position: absolute;
+        width: 250px;
+        height: 250px;
+        background: #9333ea;
+        filter: blur(120px);
+        opacity: 0.15;
+        bottom: -100px;
+        left: -100px;
+    }
+
+    .nome {
+        font-size: 55px;
+        font-weight: 800;
+        margin-bottom: 10px;
+        background: linear-gradient(90deg,#ffffff,#60a5fa,#a855f7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: subir 1s ease;
+    }
+
+    .cargo {
+        color: #9ca3af;
+        font-size: 18px;
+        margin-bottom: 35px;
+        animation: subir 1.2s ease;
+    }
+
+    .texto {
+        font-size: 18px;
+        line-height: 2;
+        color: #d1d5db;
+        animation: subir 1.4s ease;
+    }
+
+    .destaque {
+        color: #60a5fa;
+        font-weight: bold;
+    }
+
+    .btn-whats {
+        display: inline-block;
+        margin-top: 35px;
+        padding: 16px 30px;
+        border-radius: 15px;
+        text-decoration: none;
+        color: white;
+        font-weight: 600;
+        background: linear-gradient(135deg,#2563eb,#9333ea);
+        transition: .4s;
+        animation: subir 1.6s ease;
+    }
+
+    .btn-whats:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 0 30px rgba(96,165,250,.5);
+    }
+
+    .linha {
+        width: 80px;
+        height: 4px;
+        border-radius: 50px;
+        background: linear-gradient(90deg,#2563eb,#9333ea);
+        margin-bottom: 25px;
+        animation: crescer 1.5s ease;
+    }
+
+    @keyframes aparecer {
+        from {
+            opacity: 0;
+            transform: scale(.9);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes subir {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes crescer {
+        from {
+            width: 0;
+        }
+        to {
+            width: 80px;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+
+        <div class="nome">Abraão</div>
+
+        <div class="linha"></div>
+
+        <div class="cargo">
+            Estudante de Informática • IFRO • 3º Ano B
+        </div>
+
+        <div class="texto">
+            Olá! Tenho 16 anos e sou estudante do curso Técnico em Informática do IFRO.
+            Sou apaixonado por <span class="destaque">tecnologia</span>, programação,
+            manutenção de computadores e tudo que envolve inovação.
+
+            Estou sempre buscando aprender mais, evoluir minhas habilidades e adquirir
+            novos conhecimentos para construir um futuro de sucesso.
+
+            Além da área de tecnologia, também tenho interesse na área da saúde e
+            pretendo cursar <span class="destaque">Enfermagem</span> futuramente.
+            Sou dedicado, responsável e gosto de enfrentar novos desafios.
+        </div>
+
+        <a class="btn-whats"
+           href="https://wa.me/5569993609509"
+           target="_blank">
+            💬 Falar comigo no WhatsApp
+        </a>
+
+    </div>
+</div>
+
+@code
+{
 
 }
