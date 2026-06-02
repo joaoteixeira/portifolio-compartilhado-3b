@@ -1,7 +1,107 @@
 ﻿@page "/abraao"
 
-<h3>Abraao</h3>
+<style>
+    .container {
+        max-width: 900px;
+        margin: 80px auto;
+        padding: 40px;
+        font-family: 'Segoe UI', sans-serif;
+    }
 
-@code {
+    .card {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 50px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    .nome {
+        font-size: 42px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 10px;
+    }
+
+    .cargo {
+        color: #6b7280;
+        font-size: 18px;
+        margin-bottom: 35px;
+    }
+
+    .texto {
+        color: #374151;
+        font-size: 18px;
+        line-height: 1.9;
+    }
+
+    .contato {
+        margin-top: 40px;
+    }
+
+    .whatsapp {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        background: #25D366;
+        color: white;
+        padding: 14px 24px;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        transition: 0.3s;
+    }
+
+        .whatsapp:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+    .destaque {
+        color: #2563eb;
+        font-weight: 600;
+    }
+
+    body {
+        background: #f5f7fb;
+    }
+</style>
+
+<div class="container">
+    <div class="card">
+
+        <div class="nome">Abraão Ada Genelhud</div>
+
+        <div class="cargo">
+            Estudante de Informática • IFRO • 3º Ano B
+        </div>
+
+        <div class="texto">
+            Olá! Tenho 16 anos e sou estudante do curso Técnico em Informática do IFRO.
+            Sou apaixonado por <span class="destaque">tecnologia</span>,
+            programação, manutenção de computadores e inovação.
+
+            Busco constantemente aprender novas habilidades e aprimorar meus
+            conhecimentos para crescer profissionalmente.
+
+            Além da área de tecnologia, tenho interesse na área da saúde e
+            pretendo cursar <span class="destaque">Enfermagem</span> no futuro.
+            Sou dedicado, responsável e gosto de enfrentar desafios que contribuam
+            para meu desenvolvimento pessoal e profissional.
+        </div>
+
+        <div class="contato">
+            <a class="whatsapp"
+               href="https://wa.me/5569993609509"
+               target="_blank">
+                💬 Falar no WhatsApp
+            </a>
+        </div>
+
+    </div>
+</div>
+
+@code
+{
 
 }
