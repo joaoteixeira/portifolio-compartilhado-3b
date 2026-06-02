@@ -2,20 +2,31 @@
 
 <PageTitle>Alisson Caio</PageTitle>
 
+<!-- Container principal que ocupa a tela e centraliza o cartão usando Flexbox -->
 <div class="alisson-container">
+    
+    <!-- O cartão principal onde aplicamos o efeito Glassmorphism (vidro fosco) -->
     <div class="profile-card">
+        
+        <!-- Cabeçalho do cartão contendo a foto de perfil (avatar) -->
         <div class="card-header">
             <div class="avatar">AC</div>
         </div>
+        
+        <!-- Corpo do cartão com as informações principais -->
         <div class="card-body">
+            <!-- Nome da pessoa com efeito de texto em gradiente -->
             <h1 class="name">Alisson Caio</h1>
+            <!-- Cargo ou papel atual -->
             <p class="role">Desenvolvedor & Estudante</p>
             
+            <!-- Breve biografia ou descrição -->
             <p class="bio">
                 Apaixonado por tecnologia e desenvolvimento de software. 
                 Sempre em busca de novos desafios, aprendizados e de deixar minha marca no mundo da programação!
             </p>
 
+            <!-- Seção de habilidades representadas como tags -->
             <div class="skills">
                 <span class="skill-tag">C#</span>
                 <span class="skill-tag">.NET</span>
@@ -24,6 +35,7 @@
                 <span class="skill-tag">JavaScript</span>
             </div>
 
+            <!-- Botões de ação (ex: Contato, Projetos) -->
             <div class="actions">
                 <button class="btn primary">Entrar em Contato</button>
                 <button class="btn secondary">Ver Projetos</button>
@@ -33,12 +45,13 @@
 </div>
 
 <style>
+    /* Estilos do container principal. O background é um gradiente escuro e elegante. */
     .alisson-container {
         font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        min-height: 80vh;
+        min-height: 80vh; /* Ocupa no mínimo 80% da altura da tela */
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: center; /* Centraliza verticalmente */
+        justify-content: center; /* Centraliza horizontalmente */
         background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
         padding: 2rem;
         border-radius: 16px;
@@ -46,23 +59,25 @@
         margin-top: 1rem;
     }
 
+    /* Estilo principal do Glassmorphism. Fundo semi-transparente e desfoque no fundo (backdrop-filter) */
     .profile-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.05); /* Fundo branco com 5% de opacidade */
+        backdrop-filter: blur(10px); /* Efeito de desfoque no fundo (vidro) */
         -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil para destacar o vidro */
         border-radius: 20px;
         padding: 2.5rem;
         max-width: 450px;
         width: 100%;
         text-align: center;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Sombra para dar profundidade */
         transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
     }
 
+    /* Animação ao passar o mouse por cima do cartão inteiro */
     .profile-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.5);
+        transform: translateY(-10px); /* Faz o cartão "flutuar" para cima */
+        box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.5); /* Aumenta a sombra */
     }
 
     .card-header {
@@ -71,11 +86,12 @@
         margin-bottom: 1.5rem;
     }
 
+    /* Estilização do avatar (iniciais com gradiente e borda) */
     .avatar {
         width: 120px;
         height: 120px;
         border-radius: 50%;
-        background: linear-gradient(45deg, #ff00cc, #333399);
+        background: linear-gradient(45deg, #ff00cc, #333399); /* Fundo em gradiente rosa/roxo */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -87,10 +103,12 @@
         transition: transform 0.3s ease;
     }
     
+    /* Efeito de rotação e aumento no avatar quando o mouse passa sobre o cartão */
     .profile-card:hover .avatar {
         transform: scale(1.05) rotate(5deg);
     }
 
+    /* Nome com gradiente aplicado apenas no texto (efeito bem moderno) */
     .name {
         font-size: 2.2rem;
         margin: 0;
@@ -100,6 +118,7 @@
         -webkit-text-fill-color: transparent;
     }
 
+    /* O Cargo (role) ganha uma cor mais suave e letras maiúsculas espaçadas */
     .role {
         color: #9ca3af;
         font-size: 1rem;
@@ -110,6 +129,7 @@
         letter-spacing: 2px;
     }
 
+    /* Texto comum do sobre mim */
     .bio {
         font-size: 1rem;
         line-height: 1.6;
@@ -117,6 +137,7 @@
         margin-bottom: 2rem;
     }
 
+    /* Layout flexível para as skills se ajustarem na linha */
     .skills {
         display: flex;
         flex-wrap: wrap;
@@ -125,6 +146,7 @@
         margin-bottom: 2rem;
     }
 
+    /* Cada etiqueta de habilidade é arredondada e tem fundo transparente */
     .skill-tag {
         background: rgba(255, 255, 255, 0.1);
         padding: 0.5rem 1rem;
@@ -137,6 +159,7 @@
         cursor: default;
     }
 
+    /* Animação de pulo nas tags de habilidades quando o mouse passa nelas */
     .skill-tag:hover {
         background: rgba(255, 255, 255, 0.25);
         transform: translateY(-3px);
@@ -144,12 +167,14 @@
         box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
+    /* Alinhamento dos botões no rodapé */
     .actions {
         display: flex;
         gap: 1rem;
         justify-content: center;
     }
 
+    /* Estilo base compartilhado pelos botões */
     .btn {
         padding: 0.8rem 1.5rem;
         border-radius: 8px;
@@ -161,23 +186,27 @@
         outline: none;
     }
 
+    /* Botão Principal: Cores sólidas em gradiente (igual ao avatar) */
     .btn.primary {
         background: linear-gradient(45deg, #ff00cc, #333399);
         color: white;
         box-shadow: 0 4px 15px rgba(255, 0, 204, 0.3);
     }
 
+    /* Levanta levemente o botão e aumenta o brilho no hover */
     .btn.primary:hover {
         box-shadow: 0 6px 20px rgba(255, 0, 204, 0.5);
         transform: translateY(-2px);
     }
 
+    /* Botão Secundário: Estilo contorno (Ghost Button) */
     .btn.secondary {
         background: transparent;
         color: #fff;
         border: 2px solid rgba(255, 255, 255, 0.3);
     }
 
+    /* Preenche sutilmente o fundo no hover */
     .btn.secondary:hover {
         background: rgba(255, 255, 255, 0.15);
         border-color: rgba(255, 255, 255, 0.6);
