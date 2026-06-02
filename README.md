@@ -54,7 +54,7 @@ Este projeto foi construído graças ao esforço colaborativo de **38 pessoas**.
 25. [Nome do Colaborador 25]
 26. [Nome do Colaborador 26]
 27. [Nome do Colaborador 27]
-28. [Nome do Colaborador 28]
+28. [Iúri Barbosa Leite]
 29. [Nome do Colaborador 29]
 30. [Nome do Colaborador 30]
 31. [Nome do Colaborador 31]
