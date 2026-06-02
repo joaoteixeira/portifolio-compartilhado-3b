@@ -29,7 +29,7 @@ Este projeto foi construído graças ao esforço colaborativo de **38 pessoas**.
 ### 💻 Equipe de Desenvolvimento
 1. [Abraão Genelhud ]
 2. [Adrian Acácio]
-3. [Nome do Colaborador 3]
+3. [Alisson Caio]
 4. [Nome do Colaborador 4]
 5. [Nome do Colaborador 5]
 6. [Nome do Colaborador 6]
