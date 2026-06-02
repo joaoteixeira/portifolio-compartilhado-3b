@@ -1,0 +1,25 @@
+﻿
+.perfil {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+    .perfil h1 {
+        color: #2563eb;
+        margin-bottom: 15px;
+    }
+
+    .perfil h3 {
+        margin-top: 20px;
+        color: #333;
+    }
+
+    .perfil p {
+        line-height: 1.6;
+        color: #555;
+    }

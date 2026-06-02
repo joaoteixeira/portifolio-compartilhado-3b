@@ -1,0 +1,156 @@
+﻿body {
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: radial-gradient(circle at top, #0f0f0f, #000000);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* glow fundo */
+.background-glow {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.glow1, .glow2 {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    filter: blur(150px);
+    opacity: 0.15;
+}
+
+.glow1 {
+    background: #3b82f6;
+    top: -120px;
+    right: -120px;
+}
+
+.glow2 {
+    background: #a855f7;
+    bottom: -140px;
+    left: -140px;
+}
+
+/* container */
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* card */
+.card {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(25px);
+    border-radius: 30px;
+    padding: 55px;
+    color: white;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.8);
+    /* animação inicial */
+    opacity: 0;
+    transform: translateY(40px);
+    animation: fadeIn 0.9s ease forwards;
+}
+
+/* nome */
+.nome {
+    font-size: 60px;
+    font-weight: 800;
+    background: linear-gradient(90deg,#ffffff,#60a5fa,#a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* linha */
+.linha {
+    width: 90px;
+    height: 4px;
+    border-radius: 50px;
+    background: linear-gradient(90deg,#3b82f6,#a855f7);
+    margin: 15px 0 30px;
+}
+
+/* texto */
+.cargo, .texto {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 1s ease forwards;
+}
+
+.cargo {
+    color: #9ca3af;
+    font-size: 18px;
+    animation-delay: 0.2s;
+}
+
+.texto {
+    font-size: 18px;
+    line-height: 2;
+    color: #d1d5db;
+    animation-delay: 0.4s;
+}
+
+/* destaque */
+.destaque {
+    color: #60a5fa;
+    font-weight: 600;
+}
+
+/* botão */
+.whats {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 26px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg,#2563eb,#9333ea);
+    transition: 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 1s ease forwards;
+    animation-delay: 0.6s;
+}
+
+    .whats:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 0 40px rgba(99,102,241,0.5);
+    }
+
+/* scroll animation base (para futuras seções) */
+.scroll-item {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: all 0.8s ease;
+}
+
+    .scroll-item.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+/* keyframes */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
