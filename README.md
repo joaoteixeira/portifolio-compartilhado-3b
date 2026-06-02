@@ -21,7 +21,7 @@ Este projeto foi construído graças ao esforço colaborativo de **38 pessoas**.
 * **João Teixeira**
 
 ### 💻 Equipe de Desenvolvimento
-1. [Nome do Colaborador 1]
+1. [Abraão Genelhud ]
 2. [Adrian Acácio]
 3. [Nome do Colaborador 3]
 4. [Nome do Colaborador 4]
