@@ -22,7 +22,7 @@ Este projeto foi construído graças ao esforço colaborativo de **38 pessoas**.
 
 ### 💻 Equipe de Desenvolvimento
 1. [Nome do Colaborador 1]
-2. [Nome do Colaborador 2]
+2. [Adrian Acácio]
 3. [Nome do Colaborador 3]
 4. [Nome do Colaborador 4]
 5. [Nome do Colaborador 5]
