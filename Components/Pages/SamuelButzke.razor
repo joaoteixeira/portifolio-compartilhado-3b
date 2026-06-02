@@ -1,7 +1,222 @@
 ﻿@page "/samuelbutzke"
 
-<h3>SamuelButzke</h3>
+<div class="profile-container">
+    <div class="profile-card">
 
-@code {
+        <div class="hero">
+            <div class="avatar">SB</div>
+
+            <h1>Samuel Butzke</h1>
+
+            <p class="subtitle">
+                Estudante de Informática • Desenvolvedor Web • Entusiasta de Tecnologia
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>👋 Sobre Mim</h2>
+
+            <p>
+                Sou estudante do 3º ano de Informática e gosto de transformar ideias
+                em projetos digitais. Tenho interesse em desenvolvimento web,
+                design de interfaces e criação de sistemas que resolvam problemas reais.
+            </p>
+        </div>
+
+        <div class="section">
+            <h2>💻 Minhas Especialidades</h2>
+
+            <div class="tags">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Blazor</span>
+                <span>UI/UX</span>
+                <span>Figma</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚽ Esporte Favorito</h2>
+
+            <div class="info-card">
+                <span class="emoji">⚽</span>
+                <div>
+                    <strong>Futebol</strong>
+                    <p>
+                        Gosto de acompanhar e praticar futebol, um esporte que
+                        representa trabalho em equipe, estratégia e dedicação.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🎵 Música Favorita</h2>
+
+            <div class="info-card">
+                <span class="emoji">🎧</span>
+                <div>
+                    <strong>Yago Oproprio - Linha Azul</strong>
+                    <p>
+                        Uma das músicas que mais gosto de ouvir e que faz parte da minha playlist.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>🚀 Projetos Desenvolvidos</h2>
+
+            <ul class="project-list">
+                <li>🏨 Sistema para Hotéis</li>
+                <li>🚗 Sistema para Concessionária de Veículos</li>
+                <li>🏫 Sistema Escolar</li>
+                <li>🌐 Projetos Web Acadêmicos</li>
+            </ul>
+        </div>
+
+        <div class="section destaque">
+            <h2>⭐ Projeto Destaque</h2>
+
+            <h3>Anonymous Quiz</h3>
+
+            <p>
+                O Anonymous Quiz foi um protótipo desenvolvido no Figma em conjunto
+                com amigos. A proposta era criar uma plataforma interativa de perguntas
+                anônimas com foco em simplicidade, interação e experiência do usuário.
+            </p>
+
+            <p>
+                Embora tenha permanecido como protótipo, foi um dos projetos mais
+                criativos que desenvolvi e possuía potencial para se tornar uma
+                aplicação real.
+            </p>
+        </div>
+
+        <div class="footer">
+            <p>
+                "Grandes projetos começam com ideias simples."
+            </p>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(135deg, #0f172a, #1e293b);
+    }
+
+    .profile-container {
+        display: flex;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .profile-card {
+        width: 900px;
+        max-width: 95%;
+        background: white;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+    }
+
+    .hero {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        color: white;
+        text-align: center;
+        padding: 40px;
+    }
+
+    .avatar {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.15);
+        border: 4px solid white;
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        font-weight: bold;
+    }
+
+    .hero h1 {
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        opacity: 0.9;
+    }
+
+    .section {
+        margin: 25px;
+        padding: 20px;
+        background: #f8fafc;
+        border-radius: 14px;
+        border-left: 5px solid #4f46e5;
+    }
+
+    .section h2 {
+        margin-top: 0;
+        color: #1e293b;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .tags span {
+        background: #4f46e5;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+    }
+
+    .info-card {
+        display: flex;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .emoji {
+        font-size: 2rem;
+    }
+
+    .project-list {
+        list-style: none;
+        padding: 0;
+    }
+
+    .project-list li {
+        padding: 10px;
+        margin-bottom: 8px;
+        background: white;
+        border-radius: 8px;
+    }
+
+    .destaque {
+        background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+        border-left: 5px solid #7c3aed;
+    }
+
+    .footer {
+        text-align: center;
+        padding: 20px;
+        color: #64748b;
+        font-style: italic;
+    }
+</style>
+
+@code
+{
 
 }
