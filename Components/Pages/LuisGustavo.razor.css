@@ -1,5 +1,4 @@
-﻿<style >
-.portfolio {
+﻿.portfolio {
     max-width: 800px;
     margin: 30px auto;
     padding: 20px;
@@ -7,7 +6,7 @@
 }
 
 h1 {
-    color: #db2777;
+    color: #2563eb;
     margin-bottom: 5px;
 }
 
@@ -17,16 +16,16 @@ h1 {
 }
 
 .card {
-    background: #fdf2f8;
+    background: #f8f9fa;
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 15px;
-    border-left: 4px solid #db2777;
+    border-left: 4px solid #2563eb;
 }
 
 h3 {
     margin-top: 0;
-    color: #db2777;
+    color: #2563eb;
 }
 
 ul {
