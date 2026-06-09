@@ -1,0 +1,56 @@
+﻿.pagina-estefani {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.card-estefani {
+    max-width: 700px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 30px;
+    padding: 3rem;
+    text-align: center;
+    border: 1px solid #f9a8d4;
+    box-shadow: 0 15px 40px rgba(236, 72, 153, 0.15);
+    backdrop-filter: blur(10px);
+}
+
+    .card-estefani h1 {
+        color: #be185d;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        font-family: Georgia, serif;
+    }
+
+.cargo {
+    color: #ec4899;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.card-estefani p {
+    color: #4b2c39;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.botao-estefani {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 12px 24px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #ec4899, #be185d);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+    .botao-estefani:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(236,72,153,0.3);
+    }
+
