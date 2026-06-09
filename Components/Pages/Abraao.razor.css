@@ -1,0 +1,107 @@
+﻿html, body, #app {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #000 !important;
+    color: white !important;
+}
+
+html, body, #app {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: radial-gradient(circle at top, #0f0f0f, #000000) !important;
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* centralização */
+.container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* card */
+.card {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    backdrop-filter: blur(25px);
+    border-radius: 30px;
+    padding: 55px;
+    box-shadow: 0 30px 90px rgba(0,0,0,0.8);
+    animation: fadeIn 0.8s ease;
+}
+
+/* nome */
+.nome {
+    font-size: 60px;
+    font-weight: 800;
+    background: linear-gradient(90deg,#fff,#60a5fa,#a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* linha */
+.linha {
+    width: 90px;
+    height: 4px;
+    border-radius: 50px;
+    background: linear-gradient(90deg,#3b82f6,#a855f7);
+    margin: 15px 0 30px;
+}
+
+/* texto */
+.cargo {
+    color: #9ca3af;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.texto {
+    font-size: 18px;
+    line-height: 2;
+    color: #d1d5db;
+}
+
+/* destaque */
+.destaque {
+    color: #60a5fa;
+    font-weight: 600;
+}
+
+/* botão whatsapp */
+.whats {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 26px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg,#2563eb,#9333ea);
+    transition: 0.3s ease;
+}
+
+    .whats:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0 40px rgba(99,102,241,0.5);
+    }
+
+/* animação */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
