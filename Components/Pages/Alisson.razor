@@ -1,215 +1,872 @@
 @page "/Alisson"
+@rendermode InteractiveServer
+@implements IDisposable
+@inject NavigationManager Nav
 
-<PageTitle>Alisson Caio</PageTitle>
+<div class="layout-root">
 
-<!-- Container principal que ocupa a tela e centraliza o cartão usando Flexbox -->
-<div class="alisson-container">
-    
-    <!-- O cartão principal onde aplicamos o efeito Glassmorphism (vidro fosco) -->
-    <div class="profile-card">
-        
-        <!-- Cabeçalho do cartão contendo a foto de perfil (avatar) -->
-        <div class="card-header">
-            <div class="avatar">AC</div>
-        </div>
-        
-        <!-- Corpo do cartão com as informações principais -->
-        <div class="card-body">
-            <!-- Nome da pessoa com efeito de texto em gradiente -->
-            <h1 class="name">Alisson Caio</h1>
-            <!-- Cargo ou papel atual -->
-            <p class="role">Desenvolvedor & Estudante</p>
-            
-            <!-- Breve biografia ou descrição -->
-            <p class="bio">
-                Apaixonado por tecnologia e desenvolvimento de software. 
-                Sempre em busca de novos desafios, aprendizados e de deixar minha marca no mundo da programação!
-            </p>
-
-            <!-- Seção de habilidades representadas como tags -->
-            <div class="skills">
-                <span class="skill-tag">C#</span>
-                <span class="skill-tag">.NET</span>
-                <span class="skill-tag">Blazor</span>
-                <span class="skill-tag">HTML/CSS</span>
-                <span class="skill-tag">JavaScript</span>
+    <div class="particles-container" aria-hidden="true">
+        @foreach (var p in particles)
+        {
+            <div class="particle @p.Type"
+                 style="
+                    left: @(p.X)%;
+                    width: @(p.Size)px;
+                    height: @(p.Size)px;
+                    animation-duration: @(p.Duration)s;
+                    animation-delay: @(p.Delay)s;
+                    --drift: @(p.Drift)px;
+                    opacity: 0;
+                 ">
             </div>
-
-            <!-- Botões de ação (ex: Contato, Projetos) -->
-            <div class="actions">
-                <button class="btn primary">Entrar em Contato</button>
-                <button class="btn secondary">Ver Projetos</button>
-            </div>
-        </div>
+        }
     </div>
+
+
+    <header class="hk-nav @(isScrolled ? "scrolled" : "") @(menuOpen ? "menu-open" : "")">
+        <nav class="nav-inner">
+            <a href="/" class="nav-logo" id="nav-logo" title="Voltar aos Portfólios">
+                <span class="nav-logo-icon">⚔</span>
+                <span class="nav-logo-text">Alisson <span class="soul-accent">Caio</span></span>
+                <span class="logo-tooltip text-silver">⬅ Voltar</span>
+            </a>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="javascript:void(0)" @onclick='() => ChangePage("Home")'     class="nav-link @(activePage=="Home"?"active":"")"     id="nav-home">Início</a></li>
+                <li><a href="javascript:void(0)" @onclick='() => ChangePage("About")'    class="nav-link @(activePage=="About"?"active":"")"    id="nav-about">Sobre</a></li>
+                <li><a href="javascript:void(0)" @onclick='() => ChangePage("Skills")'   class="nav-link @(activePage=="Skills"?"active":"")"   id="nav-skills">Habilidades</a></li>
+                <li><a href="javascript:void(0)" @onclick='() => ChangePage("Projects")' class="nav-link @(activePage=="Projects"?"active":"")" id="nav-projects">Projetos</a></li>
+                <li><a href="javascript:void(0)" @onclick='() => ChangePage("Contact")'  class="nav-link @(activePage=="Contact"?"active":"")"  id="nav-contact">Contato</a></li>
+            </ul>
+
+
+            <div class="nav-hud-right">
+                <div class="hud-vessels" aria-label="Soul vessels">
+                    <div class="hud-vessel filled"></div>
+                    <div class="hud-vessel filled"></div>
+                    <div class="hud-vessel filled"></div>
+                    <div class="hud-vessel filled"></div>
+                    <div class="hud-vessel"></div>
+                </div>
+                <div class="hud-geo">
+                    <div class="hud-geo-icon"></div>
+                    <span>2025</span>
+                </div>
+            </div>
+
+            <button class="nav-toggle" @onclick="ToggleMenu" id="nav-toggle" aria-label="Abrir menu">
+                <span class="toggle-line @(menuOpen ? "open" : "")"></span>
+                <span class="toggle-line @(menuOpen ? "open" : "")"></span>
+                <span class="toggle-line @(menuOpen ? "open" : "")"></span>
+            </button>
+        </nav>
+
+        @if (menuOpen)
+        {
+            <div class="mobile-menu" id="mobile-menu">
+                <ul>
+                    <li><a href="javascript:void(0)" @onclick='() => ChangePage("Home")'     @onclick="CloseMenu" class="mobile-link">Início</a></li>
+                    <li><a href="javascript:void(0)" @onclick='() => ChangePage("About")'    @onclick="CloseMenu" class="mobile-link">Sobre</a></li>
+                    <li><a href="javascript:void(0)" @onclick='() => ChangePage("Skills")'   @onclick="CloseMenu" class="mobile-link">Habilidades</a></li>
+                    <li><a href="javascript:void(0)" @onclick='() => ChangePage("Projects")' @onclick="CloseMenu" class="mobile-link">Projetos</a></li>
+                    <li><a href="javascript:void(0)" @onclick='() => ChangePage("Contact")'  @onclick="CloseMenu" class="mobile-link">Contato</a></li>
+                </ul>
+            </div>
+        }
+    </header>
+
+    <main class="main-content">
+        <article>
+
+            @if (activePage == "Home")
+            {
+
+                <section class="hero" id="hero">
+                    <div class="hero-bg">
+                        <img src="images/hero-bg.png" alt="" aria-hidden="true" class="hero-bg-img" />
+                        <div class="hero-bg-overlay"></div>
+                    </div>
+                    <div class="hero-scanlines" aria-hidden="true"></div>
+
+                    <div class="hero-content">
+
+                        <div class="knight-assembly">
+                            <div class="nail-slash" aria-hidden="true">
+                                <div class="slash-trail"></div>
+                                <div class="slash-trail t2"></div>
+                                <div class="slash-trail t3"></div>
+                            </div>
+                            <div class="knight-container">
+                                <img src="images/knight.png" alt="The Knight" class="knight-img" id="hero-knight" />
+                                <div class="knight-aura"></div>
+                                <div class="knight-shadow"></div>
+                            </div>
+                        </div>
+
+
+                        <div class="hero-text">
+                            <p class="hero-eyebrow">
+                                <span class="eyebrow-line"></span>
+                                Desenvolvedor Front-End
+                                <span class="eyebrow-line"></span>
+                            </p>
+                            <h1 class="hero-title">
+                                Alisson <span class="title-soul">Caio</span>
+                            </h1>
+                            <p class="hero-subtitle">
+                                Explorando as profundezas do código como o Knight percorre Hallownest —<br />
+                                com propósito, precisão e elegância.
+                            </p>
+
+                            <div class="soul-vessels" aria-hidden="true">
+                                <div class="vessel active"></div>
+                                <div class="vessel active"></div>
+                                <div class="vessel active"></div>
+                                <div class="vessel active"></div>
+                                <div class="vessel"></div>
+                            </div>
+
+                            <div class="hero-ctas">
+                                <a href="javascript:void(0)" @onclick='() => ChangePage("Projects")' class="btn-soul" id="hero-cta-projects">
+                                    <span>⚔</span> Ver Projetos
+                                </a>
+                                <a href="javascript:void(0)" @onclick='() => ChangePage("About")' class="btn-essence" id="hero-cta-about">
+                                    <span>📜</span> Sobre Mim
+                                </a>
+                            </div>
+
+                            <div class="scroll-hint" id="hero-scroll-hint">
+                                <div class="scroll-nail"></div>
+                                <span>Descer</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="stats-section" id="stats">
+                    <div class="stats-container">
+                        <div class="stat-item gothic-card" id="stat-projects">
+                            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                            <div class="card-corner bl"></div><div class="card-corner br"></div>
+                            <span class="stat-icon text-soul">⚡</span>
+                            <div class="stat-number text-pale">10+</div>
+                            <div class="stat-label">Projetos Concluídos</div>
+                        </div>
+                        <div class="stat-divider" aria-hidden="true">✦</div>
+                        <div class="stat-item gothic-card" id="stat-skills">
+                            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                            <div class="card-corner bl"></div><div class="card-corner br"></div>
+                            <span class="stat-icon text-essence">✦</span>
+                            <div class="stat-number text-pale">15+</div>
+                            <div class="stat-label">Tecnologias</div>
+                        </div>
+                        <div class="stat-divider" aria-hidden="true">✦</div>
+                        <div class="stat-item gothic-card" id="stat-experience">
+                            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                            <div class="card-corner bl"></div><div class="card-corner br"></div>
+                            <span class="stat-icon text-geo">◆</span>
+                            <div class="stat-number text-pale">3+</div>
+                            <div class="stat-label">Anos de Experiência</div>
+                        </div>
+                        <div class="stat-divider" aria-hidden="true">✦</div>
+                        <div class="stat-item gothic-card" id="stat-passion">
+                            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                            <div class="card-corner bl"></div><div class="card-corner br"></div>
+                            <span class="stat-icon text-infect">♥</span>
+                            <div class="stat-number text-pale">∞</div>
+                            <div class="stat-label">Paixão pelo Código</div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <section class="featured-section" id="featured-skills">
+                    <div class="section-container">
+                        <div class="section-header">
+                            <h2 class="text-pale">Charms Equipados</h2>
+                            <div class="section-divider">
+                                <span class="section-subtitle">habilidades em destaque</span>
+                            </div>
+                        </div>
+
+                        <div class="charms-preview">
+                            @foreach (var charm in FeaturedCharms)
+                            {
+                                <div class="charm-preview gothic-card" id="charm-@charm.Id">
+                                    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                                    <div class="card-corner bl"></div><div class="card-corner br"></div>
+                                    <span class="charm-icon" style="color: @charm.Color; filter: drop-shadow(0 0 8px @charm.Color)">@charm.Icon</span>
+                                    <span class="charm-name text-pale">@charm.Name</span>
+                                    <div class="charm-level">
+                                        @for (int i = 0; i < 5; i++)
+                                        {
+                                            <span class="level-dot @(i < charm.Level ? "filled" : "")" style="--dot-color: @charm.Color"></span>
+                                        }
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="text-center mt-lg">
+                            <a href="javascript:void(0)" @onclick='() => ChangePage("Skills")' class="btn-soul" id="hero-all-skills">
+                                Ver Todos os Charms ✦
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            }
+
+            else if (activePage == "About")
+            {
+                <div class="page-container">
+                    <div class="section-header">
+                        <h1 class="text-pale">O Viajante</h1>
+                        <div class="section-divider">
+                            <span class="section-subtitle">sobre mim</span>
+                        </div>
+                    </div>
+
+                    <div class="about-grid">
+
+                        <div class="about-left" id="about-profile">
+                            <div class="profile-frame">
+                                <div class="profile-placeholder">
+                                    <div class="profile-initials text-soul">AC</div>
+                                    <div class="profile-glow"></div>
+                                </div>
+                                <div class="profile-frame-corners">
+                                    <span class="frame-corner tl"></span>
+                                    <span class="frame-corner tr"></span>
+                                    <span class="frame-corner bl"></span>
+                                    <span class="frame-corner br"></span>
+                                </div>
+                            </div>
+
+                            <div class="info-card gothic-card" id="about-info-card">
+                                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                                <div class="info-row">
+                                    <span class="info-icon text-soul">📍</span>
+                                    <span class="text-silver">Brasil</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon text-essence">💼</span>
+                                    <span class="text-silver">Desenvolvedor Front-End</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon text-geo">🎓</span>
+                                    <span class="text-silver">Ciência da Computação</span>
+                                </div>
+                                <div class="info-row">
+                                    <span class="info-icon text-infect">🌐</span>
+                                    <a href="https://github.com/Bilissom" target="_blank" class="text-soul">github.com/Bilissom</a>
+                                </div>
+                            </div>
+
+                            <div class="social-links">
+                                <a href="https://github.com/Bilissom" target="_blank" class="social-btn" id="about-github">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                    GitHub
+                                </a>
+                                <a href="mailto:alissoncaiosilvasilveira70@gmail.com" class="social-btn essence" id="about-email">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                                    Email
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="about-right">
+                            <div class="bio-scroll gothic-card" id="about-bio">
+                                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                                <div class="scroll-ornament">❦</div>
+                                <p>
+                                    Olá! Sou <strong class="text-pale">Alisson Caio</strong>, desenvolvedor front-end apaixonado por
+                                    criar interfaces bonitas e funcionais. Assim como o Knight desbrava os mistérios de Hallownest,
+                                    eu exploro as profundezas do desenvolvimento web com curiosidade e determinação.
+                                </p>
+                                <br />
+                                <p>
+                                    Tenho experiência com tecnologias modernas como <span class="text-soul">React</span>,
+                                    <span class="text-essence">Blazor</span>, <span class="text-geo">CSS avançado</span> e
+                                    JavaScript. Gosto de transformar designs em experiências interativas que encantam os usuários.
+                                </p>
+                                <br />
+                                <p>
+                                    Quando não estou codando, estou explorando novos jogos, aprendendo sobre design de UX
+                                    ou contribuindo para projetos open source.
+                                </p>
+                                <div class="scroll-ornament bottom">❦</div>
+                            </div>
+
+                            <div class="timeline-section" id="about-timeline">
+                                <h3 class="text-pale mb-lg">⏳ Jornada em Hallownest</h3>
+                                @foreach (var item in Timeline)
+                                {
+                                    <div class="timeline-item" id="timeline-@item.Id">
+                                        <div class="timeline-marker">
+                                            <div class="marker-dot"></div>
+                                            <div class="marker-line"></div>
+                                        </div>
+                                        <div class="timeline-content gothic-card">
+                                            <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                                            <div class="timeline-year text-soul">@item.Year</div>
+                                            <h4 class="timeline-title text-pale">@item.Title</h4>
+                                            <p class="timeline-desc text-silver">@item.Description</p>
+                                            <div class="timeline-tags">
+                                                @foreach (var tag in item.Tags)
+                                                {
+                                                    <span class="tag-pill soul">@tag</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            else if (activePage == "Skills")
+            {
+                <div class="page-container">
+                    <div class="section-header">
+                        <h1 class="text-pale">Arsenal de Charms</h1>
+                        <div class="section-divider">
+                            <span class="section-subtitle">habilidades &amp; tecnologias</span>
+                        </div>
+                        <p class="text-silver text-center" style="max-width:600px; margin: 1rem auto 0; font-size:1.05rem; font-style:italic">
+                            Como o Knight coleta charms pelo reino de Hallownest, eu acumulo habilidades
+                            que fortalecem cada projeto que construo.
+                        </p>
+                    </div>
+
+                    <div class="category-filter" id="skills-filter">
+                        @foreach (var cat in Categories)
+                        {
+                            <button
+                                class="filter-btn @(activeCategory == cat ? "active" : "")"
+                                id="filter-@cat.ToLower().Replace(" ", "-")"
+                                @onclick="() => activeCategory = cat">
+                                @cat
+                            </button>
+                        }
+                    </div>
+
+                    <div class="skills-grid" id="skills-grid">
+                        @foreach (var skill in FilteredSkills)
+                        {
+                            <div class="charm-card gothic-card" id="charm-card-@skill.Id">
+                                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                                <div class="card-corner bl"></div><div class="card-corner br"></div>
+
+                                <span class="charm-icon-lg" style="color: @skill.Color; filter: drop-shadow(0 0 12px @skill.Color)">@skill.Icon</span>
+
+                                <div class="charm-notch">
+                                    <div class="notch-glow" style="background: @skill.Color"></div>
+                                </div>
+
+                                <h3 class="charm-name text-pale">@skill.Name</h3>
+
+                                <div class="skill-bar-container">
+                                    <div class="skill-bar">
+                                        <div class="skill-bar-fill"
+                                             style="width: @(skill.Level * 20)%; background: linear-gradient(to right, @skill.Color, @skill.ColorLight)">
+                                        </div>
+                                    </div>
+                                    <span class="skill-percent text-silver">@(skill.Level * 20)%</span>
+                                </div>
+
+                                <div class="skill-tags">
+                                    <span class="tag-pill @skill.TagType">@skill.Category</span>
+                                </div>
+
+                                <div class="equip-text text-soul">✦ Equipado</div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="lore-divider">
+                        <div class="lore-line"></div>
+                        <div class="lore-icon text-essence">⚔</div>
+                        <div class="lore-line"></div>
+                    </div>
+
+                    <section class="tools-section" id="tools-section">
+                        <div class="section-header">
+                            <h2 class="text-pale">Relíquias &amp; Ferramentas</h2>
+                        </div>
+                        <div class="tools-grid">
+                            @foreach (var tool in Tools)
+                            {
+                                <div class="tool-item gothic-card" id="tool-@tool.Id">
+                                    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                                    <div class="card-corner bl"></div><div class="card-corner br"></div>
+                                    <span class="tool-icon">@tool.Icon</span>
+                                    <span class="tool-name text-silver">@tool.Name</span>
+                                </div>
+                            }
+                        </div>
+                    </section>
+                </div>
+            }
+
+            else if (activePage == "Projects")
+            {
+                <div class="page-container">
+                    <div class="section-header">
+                        <h1 class="text-pale">Mapa de Hallownest</h1>
+                        <div class="section-divider">
+                            <span class="section-subtitle">projetos &amp; explorações</span>
+                        </div>
+                        <p class="text-silver text-center" style="max-width:600px; margin: 1rem auto 0; font-size:1.05rem; font-style:italic">
+                            Cada projeto é uma área do mapa desbravada — com seus próprios desafios,
+                            criaturas e segredos a descobrir.
+                        </p>
+                    </div>
+
+                    <div class="tag-filter" id="projects-filter">
+                        @foreach (var tag in FilterTags)
+                        {
+                            <button
+                                class="filter-btn @(activeFilter == tag ? "active" : "")"
+                                id="filter-@tag.ToLower().Replace("#","-")"
+                                @onclick="() => activeFilter = tag">
+                                @tag
+                            </button>
+                        }
+                    </div>
+
+                    <div class="projects-grid" id="projects-grid">
+                        @foreach (var proj in FilteredProjects)
+                        {
+                            <article class="project-card gothic-card @(proj.Featured ? "featured" : "")"
+                                     id="project-@proj.Id">
+                                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                                <div class="card-corner bl"></div><div class="card-corner br"></div>
+
+                                @if (proj.Featured)
+                                {
+                                    <div class="featured-badge">
+                                        <span class="text-geo">◆</span>
+                                        <span>Destaque</span>
+                                    </div>
+                                }
+
+                                <div class="project-header">
+                                    <div class="project-icon" style="color: @proj.Color">@proj.Icon</div>
+                                    <div class="project-meta">
+                                        <span class="project-area text-silver">@proj.Area</span>
+                                        <h3 class="project-title text-pale">@proj.Title</h3>
+                                    </div>
+                                </div>
+
+                                <p class="project-desc text-silver">@proj.Description</p>
+
+                                <div class="project-tags">
+                                    @foreach (var tag in proj.Tags)
+                                    {
+                                        <span class="tag-pill soul">@tag</span>
+                                    }
+                                </div>
+
+                                <div class="project-links">
+                                    @if (!string.IsNullOrEmpty(proj.GitHub))
+                                    {
+                                        <a href="@proj.GitHub" target="_blank" class="project-link" id="proj-github-@proj.Id">
+                                            <span>⚡</span> Código
+                                        </a>
+                                    }
+                                    @if (!string.IsNullOrEmpty(proj.Demo))
+                                    {
+                                        <a href="@proj.Demo" target="_blank" class="project-link demo" id="proj-demo-@proj.Id">
+                                            <span>🔮</span> Demo
+                                        </a>
+                                    }
+                                </div>
+
+                                <div class="map-stamp" style="color: @proj.Color">@proj.Icon</div>
+                            </article>
+                        }
+                    </div>
+
+                    @if (!FilteredProjects.Any())
+                    {
+                        <div class="no-results text-center">
+                            <div style="font-size: 3rem; margin-bottom: 1rem">🗺️</div>
+                            <p class="text-silver">Nenhum projeto encontrado nessa área do mapa.</p>
+                        </div>
+                    }
+                </div>
+            }
+
+            else if (activePage == "Contact")
+            {
+                <div class="page-container">
+                    <div class="section-header">
+                        <h1 class="text-pale">Invocar o Espírito</h1>
+                        <div class="section-divider">
+                            <span class="section-subtitle">entre em contato</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-grid">
+
+                        <div class="npc-dialog-section" id="contact-npc">
+                            <div class="npc-container">
+                                <div class="npc-character">
+                                    <div class="npc-avatar">
+                                        <img src="images/knight.png" alt="The Knight" class="skull-img" />
+                                        <div class="skull-glow"></div>
+                                    </div>
+                                    <div class="npc-name text-soul">Alisson Caio</div>
+                                    <div class="npc-title text-silver">Desenvolvedor Front-End</div>
+                                </div>
+
+                                <div class="dialog-box gothic-card" id="contact-dialog-box">
+                                    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                                    <div class="card-corner bl"></div><div class="card-corner br"></div>
+                                    <p class="dialog-text">
+                                        <span class="dialog-cursor text-soul">▶</span>
+                                        @dialogText
+                                    </p>
+                                </div>
+
+                                <div class="dialog-options" id="contact-dialog-options">
+                                    @foreach (var opt in DialogOptions)
+                                    {
+                                        <button
+                                            class="dialog-option @(activeDialog == opt.Id ? "selected" : "")"
+                                            id="dialog-opt-@opt.Id"
+                                            @onclick="() => SelectDialog(opt)">
+                                            <span class="option-arrow">›</span>
+                                            @opt.Label
+                                        </button>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="contact-links" id="contact-links">
+                                <a href="mailto:alissoncaiosilvasilveira70@gmail.com" class="contact-link-item" id="contact-email">
+                                    <div class="link-icon text-soul">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="2" y="4" width="20" height="16" rx="2"/>
+                                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                                        </svg>
+                                    </div>
+                                    <div class="link-info">
+                                        <span class="link-label text-silver">Email</span>
+                                        <span class="link-value text-pale">alissoncaiosilvasilveira70@gmail.com</span>
+                                    </div>
+                                </a>
+                                <a href="https://github.com/Bilissom" target="_blank" class="contact-link-item" id="contact-github">
+                                    <div class="link-icon text-essence">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                                    </div>
+                                    <div class="link-info">
+                                        <span class="link-label text-silver">GitHub</span>
+                                        <span class="link-value text-pale">github.com/Bilissom</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+
+                        <div class="contact-form-section" id="contact-form-section">
+                            <div class="form-header">
+                                <h2 class="text-pale">📜 Deixar Mensagem</h2>
+                                <p class="text-silver" style="font-size:1rem; font-style:italic">
+                                    Escreva sua mensagem no pergaminho abaixo. Responderei o mais breve possível.
+                                </p>
+                            </div>
+
+                            @if (formSent)
+                            {
+                                <div class="form-success gothic-card" id="form-success">
+                                    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                                    <div class="card-corner bl"></div><div class="card-corner br"></div>
+                                    <div class="success-icon text-soul" style="font-size:3rem; text-shadow: var(--glow-soul)">✦</div>
+                                    <h3 class="text-pale">Mensagem Enviada!</h3>
+                                    <p class="text-silver">Sua alma chegou até mim. Em breve retornarei ao lar.</p>
+                                    <button class="btn-soul" @onclick="() => formSent = false" id="form-reset-btn">
+                                        Enviar Outra
+                                    </button>
+                                </div>
+                            }
+                            else
+                            {
+                                <form class="contact-form gothic-card" @onsubmit="SubmitForm" id="contact-form">
+                                    <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                                    <div class="card-corner bl"></div><div class="card-corner br"></div>
+
+                                    <div class="form-group" id="form-group-name">
+                                        <label class="form-label text-soul" for="input-name">Nome do Viajante</label>
+                                        <input type="text" id="input-name" class="form-input" placeholder="Seu nome..."
+                                               @bind="formName" required />
+                                    </div>
+                                    <div class="form-group" id="form-group-email">
+                                        <label class="form-label text-soul" for="input-email">Endereço de Retorno</label>
+                                        <input type="email" id="input-email" class="form-input" placeholder="seu@email.com"
+                                               @bind="formEmail" required />
+                                    </div>
+                                    <div class="form-group" id="form-group-subject">
+                                        <label class="form-label text-soul" for="input-subject">Assunto da Missão</label>
+                                        <input type="text" id="input-subject" class="form-input" placeholder="Sobre o que você deseja falar..."
+                                               @bind="formSubject" />
+                                    </div>
+                                    <div class="form-group" id="form-group-message">
+                                        <label class="form-label text-soul" for="input-message">Mensagem Sagrada</label>
+                                        <textarea id="input-message" class="form-input form-textarea"
+                                                  placeholder="Escreva sua mensagem aqui..."
+                                                  rows="5" @bind="formMessage" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn-soul form-submit" id="form-submit-btn">
+                                        <span>✉</span> Enviar Mensagem
+                                    </button>
+                                </form>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </article>
+    </main>
+
+
+    <footer class="hk-footer">
+        <div class="footer-inner">
+            <div class="footer-logo">
+                <span class="text-soul glow-soul">✦</span>
+                <span class="text-pale">Alisson Caio</span>
+                <span class="text-soul glow-soul">✦</span>
+            </div>
+            <p class="footer-quote text-silver">
+                <em>"Not dead, not alive. Sealed away, with nothing but silence and cold."</em>
+            </p>
+            <div class="footer-links">
+                <a href="https://github.com/Bilissom" target="_blank" class="footer-link" id="footer-github">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                    GitHub
+                </a>
+                <span class="text-silver">·</span>
+                <a href="mailto:alissoncaiosilvasilveira70@gmail.com" class="footer-link" id="footer-email">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    Email
+                </a>
+            </div>
+            <p class="footer-copy text-silver">
+                © @DateTime.Now.Year Alisson Caio · Forjado nas profundezas de Hallownest
+            </p>
+        </div>
+    </footer>
 </div>
 
-<style>
-    /* Estilos do container principal. O background é um gradiente escuro e elegante. */
-    .alisson-container {
-        font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        min-height: 80vh; /* Ocupa no mínimo 80% da altura da tela */
-        display: flex;
-        align-items: center; /* Centraliza verticalmente */
-        justify-content: center; /* Centraliza horizontalmente */
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-        padding: 2rem;
-        border-radius: 16px;
-        color: #ffffff;
-        margin-top: 1rem;
+@code {
+    private string activePage = "Home";
+
+    private void ChangePage(string page)
+    {
+        activePage = page;
+        menuOpen = false;
     }
 
-    /* Estilo principal do Glassmorphism. Fundo semi-transparente e desfoque no fundo (backdrop-filter) */
-    .profile-card {
-        background: rgba(255, 255, 255, 0.05); /* Fundo branco com 5% de opacidade */
-        backdrop-filter: blur(10px); /* Efeito de desfoque no fundo (vidro) */
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.1); /* Borda sutil para destacar o vidro */
-        border-radius: 20px;
-        padding: 2.5rem;
-        max-width: 450px;
-        width: 100%;
-        text-align: center;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37); /* Sombra para dar profundidade */
-        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+    // ── Nav ──────────────────────────────────────────────────
+    private bool isScrolled = false;
+    private bool menuOpen = false;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            Nav.LocationChanged += OnLocationChanged;
+        }
     }
 
-    /* Animação ao passar o mouse por cima do cartão inteiro */
-    .profile-card:hover {
-        transform: translateY(-10px); /* Faz o cartão "flutuar" para cima */
-        box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.5); /* Aumenta a sombra */
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        menuOpen = false;
+        StateHasChanged();
     }
 
-    .card-header {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 1.5rem;
+    private void ToggleMenu() => menuOpen = !menuOpen;
+    private void CloseMenu()  => menuOpen = false;
+
+    public void Dispose()
+    {
+        Nav.LocationChanged -= OnLocationChanged;
     }
 
-    /* Estilização do avatar (iniciais com gradiente e borda) */
-    .avatar {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        background: linear-gradient(45deg, #ff00cc, #333399); /* Fundo em gradiente rosa/roxo */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        font-weight: bold;
-        color: white;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        border: 4px solid rgba(255,255,255,0.2);
-        transition: transform 0.3s ease;
-    }
-    
-    /* Efeito de rotação e aumento no avatar quando o mouse passa sobre o cartão */
-    .profile-card:hover .avatar {
-        transform: scale(1.05) rotate(5deg);
+    // ── Particles ─────────────────────────────────────────────
+    private List<Particle> particles = new();
+
+    protected override void OnInitialized()
+    {
+        var rng   = new Random();
+        var types = new[] { "soul", "soul", "soul", "essence", "geo" };
+
+        for (int i = 0; i < 40; i++)
+        {
+            particles.Add(new Particle
+            {
+                X        = rng.NextDouble() * 100,
+                Size     = rng.NextDouble() * 4 + 2,
+                Duration = rng.NextDouble() * 15 + 10,
+                Delay    = rng.NextDouble() * -30,
+                Drift    = (rng.NextDouble() - 0.5) * 80,
+                Type     = types[rng.Next(types.Length)]
+            });
+        }
     }
 
-    /* Nome com gradiente aplicado apenas no texto (efeito bem moderno) */
-    .name {
-        font-size: 2.2rem;
-        margin: 0;
-        font-weight: 700;
-        background: -webkit-linear-gradient(#fff, #d1d5db);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+    private class Particle
+    {
+        public double X        { get; set; }
+        public double Size     { get; set; }
+        public double Duration { get; set; }
+        public double Delay    { get; set; }
+        public double Drift    { get; set; }
+        public string Type     { get; set; } = "soul";
     }
 
-    /* O Cargo (role) ganha uma cor mais suave e letras maiúsculas espaçadas */
-    .role {
-        color: #9ca3af;
-        font-size: 1rem;
-        margin-top: 0.5rem;
-        margin-bottom: 1.5rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+    // ── Home ──────────────────────────────────────────────────
+    private List<CharmItem> FeaturedCharms = new()
+    {
+        new("react",   "⚛",  "React",      4, "#7cc4f0"),
+        new("blazor",  "🔷", "Blazor",     3, "#a88dcc"),
+        new("css",     "🎨", "CSS/SASS",   5, "#5baee0"),
+        new("js",      "⚡", "JavaScript", 4, "#c8a018"),
+        new("html",    "📄", "HTML5",      5, "#b85e18"),
+        new("figma",   "✏️", "Figma",      3, "#d06820"),
+    };
+
+    private record CharmItem(string Id, string Icon, string Name, int Level, string Color);
+
+    // ── About ─────────────────────────────────────────────────
+    private List<TimelineItem> Timeline = new()
+    {
+        new("uni",        "2021",      "Início na Graduação",   "Comecei minha jornada em Ciência da Computação, onde descobri minha paixão pelo desenvolvimento front-end.",                    new[]{"HTML", "CSS", "JavaScript"}),
+        new("first-proj", "2022",      "Primeiros Projetos",    "Desenvolvi meus primeiros projetos web, explorando React e design responsivo.",                                                  new[]{"React", "Git", "Bootstrap"}),
+        new("blazor",     "2023",      "Descobrindo Blazor",    "Mergulhei no ecossistema .NET e Blazor, expandindo meu arsenal de tecnologias.",                                                 new[]{"Blazor", "C#", ".NET"}),
+        new("now",        "2024–hoje", "Em Evolução Contínua",  "Atualmente focado em criar experiências web de alta qualidade, unindo design e performance.",                                    new[]{"React", "Blazor", "Figma", "SASS"}),
+    };
+
+    private record TimelineItem(string Id, string Year, string Title, string Description, string[] Tags);
+
+    // ── Skills ─────────────────────────────────────────────────
+    private string  activeCategory = "Todos";
+
+    private List<string> Categories = new() { "Todos", "Front-End", "Framework", "Estilo", "Ferramentas" };
+
+    private List<SkillItem> Skills = new()
+    {
+        new("html",     "📄", "HTML5",      5, "Front-End",   "#e06820", "#ff8040", "infect"),
+        new("css",      "🎨", "CSS/SASS",   5, "Estilo",      "#5baee0", "#80ccff", "soul"),
+        new("js",       "⚡", "JavaScript", 4, "Front-End",   "#c8a018", "#ffe060", "geo"),
+        new("ts",       "🔷", "TypeScript", 3, "Front-End",   "#5baee0", "#80ccff", "soul"),
+        new("react",    "⚛",  "React",      4, "Framework",   "#7cc4f0", "#a0dcff", "soul"),
+        new("blazor",   "🔶", "Blazor",     3, "Framework",   "#a88dcc", "#ccaaff", "essence"),
+        new("git",      "🌿", "Git",        4, "Ferramentas", "#e06820", "#ff8040", "infect"),
+        new("figma",    "✏️", "Figma",      3, "Ferramentas", "#d06820", "#ff9040", "infect"),
+        new("tailwind", "💨", "Tailwind",   3, "Estilo",      "#5baee0", "#80ccff", "soul"),
+        new("node",     "🟩", "Node.js",    2, "Framework",   "#80cc60", "#a0ff80", "geo"),
+        new("csharp",   "🔵", "C#",         3, "Framework",   "#a88dcc", "#ccaaff", "essence"),
+        new("sass",     "💎", "SASS",       4, "Estilo",      "#c060a0", "#e880cc", "essence"),
+    };
+
+    private IEnumerable<SkillItem> FilteredSkills =>
+        activeCategory == "Todos" ? Skills : Skills.Where(s => s.Category == activeCategory);
+
+    private record SkillItem(string Id, string Icon, string Name, int Level, string Category, string Color, string ColorLight, string TagType);
+
+    // ── Tools ──────────────────────────────────────────────────
+    private List<ToolItem> Tools = new()
+    {
+        new("vscode",    "💻", "VS Code"),
+        new("github",    "🐙", "GitHub"),
+        new("npm",       "📦", "NPM"),
+        new("postman",   "📬", "Postman"),
+        new("chrome",    "🌐", "DevTools"),
+        new("notion",    "📝", "Notion"),
+        new("docker",    "🐳", "Docker"),
+        new("linux",     "🐧", "Linux"),
+    };
+
+    private record ToolItem(string Id, string Icon, string Name);
+
+    // ── Projects ───────────────────────────────────────────────
+    private string activeFilter = "Todos";
+
+    private List<string> FilterTags = new()
+    {
+        "Todos", "React", "Blazor", "CSS", "JavaScript", "C#"
+    };
+
+    private List<ProjectItem> Projects = new()
+    {
+        new("portfolio",   "🗺️", "Portfólio Hollow Knight",     "Forgotten Crossroads",  "Este próprio portfólio — uma experiência imersiva temática do universo de Hollow Knight.",         new[]{"Blazor", "CSS", "C#"},      "#5baee0", "https://github.com/Bilissom", "", true),
+        new("react-app",   "⚛",  "App React Interativo",        "City of Tears",         "Aplicação React com gerenciamento de estado, hooks personalizados e animações fluidas.",            new[]{"React", "JavaScript"},      "#7cc4f0", "https://github.com/Bilissom", "", false),
+        new("landing",     "🏰", "Landing Page Premium",        "Kingdom's Edge",        "Landing page moderna com animações CSS avançadas, otimizada para conversão e performance.",        new[]{"CSS", "JavaScript", "HTML"}, "#c8a018", "https://github.com/Bilissom", "", false),
+        new("dashboard",   "📊", "Dashboard Analytics",         "Ancient Basin",         "Dashboard responsivo para visualização de dados com gráficos interativos e filtros dinâmicos.", new[]{"React", "JavaScript"},      "#b47cff", "https://github.com/Bilissom", "", false),
+        new("api-blazor",  "🔮", "API + Blazor CRUD",           "Fungal Wastes",         "Sistema completo CRUD com API REST em C# e interface Blazor WebAssembly.",                        new[]{"Blazor", "C#", "CSS"},      "#a88dcc", "https://github.com/Bilissom", "", false),
+    };
+
+    private IEnumerable<ProjectItem> FilteredProjects =>
+        activeFilter == "Todos" ? Projects : Projects.Where(p => p.Tags.Contains(activeFilter));
+
+    private record ProjectItem(
+        string   Id,
+        string   Icon,
+        string   Title,
+        string   Area,
+        string   Description,
+        string[] Tags,
+        string   Color,
+        string   GitHub,
+        string   Demo,
+        bool     Featured
+    );
+
+    // ── Contact ────────────────────────────────────────────────
+    private string dialogText   = "Olá, viajante. Fico feliz que tenhas chegado até aqui. Como posso te ajudar?";
+    private string? activeDialog;
+    private bool   formSent;
+    private string formName    = "";
+    private string formEmail   = "";
+    private string formSubject = "";
+    private string formMessage = "";
+
+    private List<DialogOption> DialogOptions = new()
+    {
+        new("work",     "Tenho uma proposta de trabalho"),
+        new("collab",   "Quero colaborar em um projeto"),
+        new("hello",    "Apenas quero dizer olá"),
+        new("form",     "Prefiro preencher o formulário"),
+    };
+
+    private Dictionary<string, string> DialogResponses = new()
+    {
+        ["work"]   = "Excelente! Fico feliz com seu interesse. Preencha o formulário ao lado com os detalhes da sua proposta e eu retornarei em breve.",
+        ["collab"] = "Colaborações são sempre bem-vindas! Conte-me mais sobre a ideia. Use o formulário para descrever o projeto.",
+        ["hello"]  = "Olá! Que bom ter você aqui em Hallownest. Obrigado pela visita — qualquer dúvida, é só falar!",
+        ["form"]   = "Claro! O pergaminho ao lado aguarda sua mensagem. Escreverei de volta o mais rápido que puder.",
+    };
+
+    private void SelectDialog(DialogOption opt)
+    {
+        activeDialog = opt.Id;
+        if (DialogResponses.TryGetValue(opt.Id, out var resp))
+            dialogText = resp;
     }
 
-    /* Texto comum do sobre mim */
-    .bio {
-        font-size: 1rem;
-        line-height: 1.6;
-        color: #d1d5db;
-        margin-bottom: 2rem;
-    }
+    private record DialogOption(string Id, string Label);
 
-    /* Layout flexível para as skills se ajustarem na linha */
-    .skills {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.8rem;
-        margin-bottom: 2rem;
+    private void SubmitForm()
+    {
+        formSent = true;
+        formName = formEmail = formSubject = formMessage = "";
     }
-
-    /* Cada etiqueta de habilidade é arredondada e tem fundo transparente */
-    .skill-tag {
-        background: rgba(255, 255, 255, 0.1);
-        padding: 0.5rem 1rem;
-        border-radius: 50px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: #e5e7eb;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        transition: all 0.3s ease;
-        cursor: default;
-    }
-
-    /* Animação de pulo nas tags de habilidades quando o mouse passa nelas */
-    .skill-tag:hover {
-        background: rgba(255, 255, 255, 0.25);
-        transform: translateY(-3px);
-        color: #fff;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    /* Alinhamento dos botões no rodapé */
-    .actions {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-    }
-
-    /* Estilo base compartilhado pelos botões */
-    .btn {
-        padding: 0.8rem 1.5rem;
-        border-radius: 8px;
-        font-size: 1rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: none;
-        outline: none;
-    }
-
-    /* Botão Principal: Cores sólidas em gradiente (igual ao avatar) */
-    .btn.primary {
-        background: linear-gradient(45deg, #ff00cc, #333399);
-        color: white;
-        box-shadow: 0 4px 15px rgba(255, 0, 204, 0.3);
-    }
-
-    /* Levanta levemente o botão e aumenta o brilho no hover */
-    .btn.primary:hover {
-        box-shadow: 0 6px 20px rgba(255, 0, 204, 0.5);
-        transform: translateY(-2px);
-    }
-
-    /* Botão Secundário: Estilo contorno (Ghost Button) */
-    .btn.secondary {
-        background: transparent;
-        color: #fff;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-
-    /* Preenche sutilmente o fundo no hover */
-    .btn.secondary:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.6);
-        transform: translateY(-2px);
-    }
-</style>
+}
