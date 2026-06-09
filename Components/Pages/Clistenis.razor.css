@@ -1,0 +1,131 @@
+﻿body {
+}
+/* Fundo da página */
+.pagina-equipe {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f4c81, #1e88e5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card principal */
+.card-equipe {
+    width: 100%;
+    max-width: 900px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Nome */
+.nome-equipe {
+    text-align: center;
+    color: #1565c0;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* Cargo */
+.cargo-equipe {
+    text-align: center;
+    color: #546e7a;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Cards internos */
+.info-card {
+    background: #f5faff;
+    border-left: 6px solid #1e88e5;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+    .info-card:hover {
+        transform: translateY(-3px);
+    }
+
+    /* Títulos */
+    .info-card h3 {
+        color: #0d47a1;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+    }
+
+    /* Textos */
+    .info-card p,
+    .info-card li {
+        color: #37474f;
+        line-height: 1.7;
+        margin-bottom: 8px;
+    }
+
+/* Lista de projetos */
+.lista-projetos {
+    padding-left: 20px;
+}
+
+    .lista-projetos li {
+        margin-bottom: 10px;
+    }
+
+/* Habilidades */
+.lista-habilidades {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+    .lista-habilidades span {
+        background: #1e88e5;
+        color: white;
+        padding: 8px 14px;
+        border-radius: 20px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: 0.3s;
+    }
+
+        .lista-habilidades span:hover {
+            background: #1565c0;
+        }
+
+/* Botão */
+.botao-voltar {
+    display: block;
+    width: fit-content;
+    margin: 30px auto 0;
+    padding: 12px 25px;
+    background: #1565c0;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+    .botao-voltar:hover {
+        background: #0d47a1;
+        transform: scale(1.05);
+    }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .card-equipe {
+        padding: 25px;
+    }
+
+    .nome-equipe {
+        font-size: 2rem;
+    }
+
+    .cargo-equipe {
+        font-size: 1rem;
+    }
+}
